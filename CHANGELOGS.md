@@ -5,7 +5,7 @@
 
 ---
 
-## **Zylo-Beta-1.0.0** — *Initial Release*
+## **Zylo-Beta-0.0.1** — *Initial Release*
 
 - Initial beta release.
 - Core auth pages (login, signup, forgot/reset).
@@ -15,7 +15,7 @@
 
 ---
 
-## **Zylo-Beta-1.1.0** — *The Core-Basic Update*
+## **Zylo-Beta-0.1.1** — *The Core-Basic Update*
 
 ### NEW :
 - Added Friends and Groups basics in UI.
@@ -31,7 +31,7 @@
 
 ---
 
-## **Zylo-Beta-v1.2.0** — *The Stability Update*
+## **Zylo-Beta-0.2.1** — *The Stability Update*
 
 ### NEW :
 - **Profile editing**: avatar/banner upload preview and persistence.
@@ -59,7 +59,7 @@
 
 ---
 
-## **Zylo-Beta-v1.2.1** — *The Modernization Update*
+## **Zylo-Beta-0.2.11** — *The Modernization Update*
 
 ### NEW :
 - **UI/UX**: Completely change the UI with a more modern look.
@@ -85,7 +85,7 @@
 
 ---
 
-## **Zylo-Beta-v1.3.0 - 1.3.1** — *The UI/UX Update*
+## **Zylo-Beta-0.3.1 - 0.3.11** — *The UI/UX Update*
 
 ### NEW :
 - **Integrated Content**: Home page now directly includes QnA and What's New sections for immediate access.
@@ -106,7 +106,7 @@
 
 ---
 
-## **Zylo-Beta-v1.3.2** — *The Visual Polish Update*
+## **Zylo-Beta-0.3.12** — *The Visual Polish Update*
 
 ### NEW :
 - **Visual Overhaul**: Major refinements to sidebar navigation, tab transitions, and overall UI responsiveness.
@@ -119,7 +119,7 @@
 
 ---
 
-## **Zylo-Beta-v1.4.2** — *The Intelligence Update*
+## **Zylo-Beta-0.4.12** — *The Intelligence Update*
 
 ### NEW :
 - **Dual AI Persona System**: Choose between **Diszi** (Analytical) and **Zily** (Creative) assistants.
@@ -133,7 +133,7 @@
 
 ---
 
-## **Zylo-Beta-v1.5.0** — *The Stability & Polish Update*
+## **Zylo-Beta-0.5.1** — *The Stability & Polish Update*
 
 ### NEW :
 - **Global Sidebar Toggle**: Added expand/collapse button to ALL specific headers (Home, Friends, Settings, Groups, Cloud, Profile) for consistent navigation control.
@@ -158,7 +158,7 @@
 
 ---
 
-## **Zylo-Beta-v1.5.1** — *The Specialized Modes Update* *(Latest)*
+## **Zylo-Beta-0.5.11** — *The Specialized Modes Update* *(Latest)*
 
 ### NEW :
 - **AI Specialized Modes**: Task-specific modes (Thinking, Planning, Code, Review) for Diszi and Zily assistants.
