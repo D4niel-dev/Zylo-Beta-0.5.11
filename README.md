@@ -11,7 +11,7 @@
 <div align="center">
   
 ![Status](https://img.shields.io/badge/Status-beta-blue)
-![Build](https://img.shields.io/badge/Build-beta--0.5.12-blue)
+![Build](https://img.shields.io/badge/Build-1.5.1-blue)
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Web%20%7C%20Mobile-lightgrey)
@@ -47,8 +47,8 @@ utilities, and AI assistance into a single unified workspace.
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/D4niel-dev/Zylo-Beta-1.x.x.git
-   cd Zylo-Beta-1.x.x
+   git clone https://github.com/D4niel-dev/Zylo-Beta-0.x.x.git
+   cd Zylo-Beta-0.x.x
    ```
 
 2. **Install Dependencies**:
