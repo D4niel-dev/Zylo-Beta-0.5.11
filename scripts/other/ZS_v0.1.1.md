@@ -1,4 +1,4 @@
-# Zylo Slayer — Agent Prompt for Major Upgrade
+# Zylo Slayer — Major Upgrade
 
 You are working on **Zylo**, specifically the **Zylo Slayer** game module inside the app.
 
