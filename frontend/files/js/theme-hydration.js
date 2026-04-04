@@ -7,11 +7,31 @@
     }
 
     if (mode === "custom") {
-      const cur = localStorage.getItem("currentCustomTheme");
-      const arrJSON = localStorage.getItem("customThemes");
-      if (!arrJSON) return;
-      const arr = JSON.parse(arrJSON);
-      const t = arr.find((x) => x.name === cur);
+      const curJSON = localStorage.getItem("currentCustomTheme");
+      if (!curJSON) return;
+      
+      let t;
+      try {
+        t = JSON.parse(curJSON);
+        
+        // Handle migration cases where it might just be the theme name
+        if (typeof t === 'string') {
+            const arrJSON = localStorage.getItem("customThemes");
+            if (arrJSON) {
+                const arr = JSON.parse(arrJSON);
+                t = arr.find((x) => x.name === curJSON);
+            } else {
+                t = null;
+            }
+        }
+      } catch (e) {
+        // Fallback for raw string lookup
+        const arrJSON = localStorage.getItem("customThemes");
+        if (arrJSON) {
+            const arr = JSON.parse(arrJSON);
+            t = arr.find((x) => x.name === curJSON);
+        }
+      }
       
       if (t) {
         document.documentElement.classList.add("theme-custom");

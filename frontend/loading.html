@@ -7,50 +7,115 @@
   <link rel="icon" href="/images/zylo/Zylo_icon.ico" type="image/x-icon" />
   <link rel="manifest" href="/manifest.webmanifest" />
   <meta name="theme-color" content="#0d0d1a" />
+  <script src="/files/js/theme-hydration.js"></script>
   <script src="/files/vendor/tailwindcss.js"></script>
   <link rel="stylesheet" href="/css/global.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ["Sora", "sans-serif"],
+            body: ["DM Sans", "sans-serif"],
+          }
+        }
+      }
+    };
+  </script>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'DM Sans', sans-serif;
-      background: linear-gradient(145deg, #0d0d1a 0%, #1e1b4b 50%, #312e81 100%);
+      background: linear-gradient(145deg, #eceae3 0%, #e3e1da 50%, #d6d3cc 100%);
+      color: #2b2a26;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       overflow: hidden;
+    }
+
+    .dark body {
+      background: linear-gradient(145deg, #0d0d1a 0%, #1e1b4b 50%, #312e81 100%);
       color: white;
     }
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-image: 
-        radial-gradient(circle at 30% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 70% 80%, rgba(99, 102, 241, 0.08) 0%, transparent 50%);
-      pointer-events: none;
-      z-index: -1;
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.05);
+      animation: formFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     
+    .dark .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    @keyframes formFadeIn {
+      0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .logo-glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 140px; height: 140px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+      animation: pulseGlow 2.5s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    .dark body .logo-glow {
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%);
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.6; }
+      50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.9; }
+    }
+
+    .progress-ring {
+      transition: stroke-dashoffset 0.4s ease-out;
+    }
+    
+    .pulse-logo {
+      animation: logoPulse 4s ease-in-out infinite;
+    }
+    
+    @keyframes logoPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); filter: drop-shadow(0 0 15px rgba(139, 92, 246, 0.5)); }
+    }
+
     /* Floating particles */
     .particles {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
       pointer-events: none;
       overflow: hidden;
+      z-index: 0;
     }
     .particle {
       position: absolute;
-      width: 4px;
-      height: 4px;
-      background: rgba(139, 92, 246, 0.5);
+      width: 4px; height: 4px;
+      background: rgba(59, 130, 246, 0.5);
       border-radius: 50%;
       animation: particleFloat 8s ease-in-out infinite;
     }
+    .dark body .particle {
+      background: rgba(139, 92, 246, 0.5);
+    }
+    
     .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
     .particle:nth-child(2) { left: 20%; animation-delay: 1s; }
     .particle:nth-child(3) { left: 35%; animation-delay: 2s; }
@@ -66,153 +131,21 @@
       100% { transform: translateY(-20vh) scale(0); opacity: 0; }
     }
 
-    .logo-container {
-      position: relative;
-      margin-bottom: 2.5rem;
-    }
-
-    .logo-glow {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 140px; height: 140px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%);
-      animation: pulseGlow 2.5s ease-in-out infinite;
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
-      50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.8; }
-    }
-
-    .app-icon {
-      position: relative;
-      z-index: 10;
-      filter: drop-shadow(0 0 25px rgba(139, 92, 246, 0.6));
-      animation: logoFloat 4s ease-in-out infinite;
-    }
-
-    @keyframes logoFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-
-    .content { text-align: center; }
-
     .welcome-text {
-      font-family: 'Sora', sans-serif;
-      font-size: 1.75rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .dark body .welcome-text {
       background: linear-gradient(135deg, #fff 0%, #a78bfa 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
-    .task-text {
-      font-size: 1rem;
-      color: rgba(255, 255, 255, 0.8);
-      margin-bottom: 0.25rem;
-    }
-
-    .meta-info {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      font-size: 0.875rem;
-      color: rgba(255, 255, 255, 0.5);
-    }
-
-    .progress-wrapper {
-      width: 320px;
-      height: 6px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 9999px;
-      overflow: hidden;
-      margin: 1.5rem 0 0.75rem;
-      position: relative;
-    }
-
-    .progress-bar {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #8b5cf6, #ec4899, #8b5cf6);
-      background-size: 200% 100%;
-      animation: shimmer 2s linear infinite;
-      border-radius: 9999px;
-      transition: width 0.4s ease-out;
-    }
-
-    @keyframes shimmer {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-
-    .loading-tip {
-      font-size: 0.875rem;
-      color: rgba(255, 255, 255, 0.5);
-      margin-top: 1.5rem;
-      max-width: 300px;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.5s ease;
-    }
-
-    .loading-tip.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    #percentage {
-      font-family: 'Sora', monospace;
-      color: #a78bfa;
-      font-weight: 600;
-    }
-
-    .skip-btn {
-      margin-top: 2rem;
-      padding: 0.6rem 1.25rem;
-      font-size: 0.875rem;
-      color: rgba(255, 255, 255, 0.4);
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 0.75rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .skip-btn.visible {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .skip-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      border-color: rgba(255, 255, 255, 0.2);
-    }
-    
-    .logo-container, .content, .progress-wrapper, .loading-tip, .skip-btn {
-      transform: scale(0.85); /* More aggressive scale */
-      transform-origin: center;
-    }
-    
-    /* Compact overrides */
-    body { font-size: 14px; }
-    .app-icon { width: 5rem !important; height: 5rem !important; }
-    .logo-glow { width: 100px !important; height: 100px !important; }
-    .welcome-text { font-size: 1.5rem !important; }
-    .progress-wrapper { width: 240px !important; margin-top: 1rem !important; }
   </style>
 </head>
-<body class="select-none">
+<body class="select-none transition-colors duration-500">
 
   <!-- Floating Particles -->
   <div class="particles">
@@ -225,43 +158,64 @@
     <div class="particle"></div>
   </div>
 
-  <!-- Logo -->
-  <div class="logo-container">
-    <div class="logo-glow"></div>
-    <img src="/images/zylo/Zylo_icon.png" alt="Zylo Logo" class="app-icon w-28 h-28" />
-  </div>
-
-  <!-- Content -->
-  <div class="content">
-    <h2 id="welcomeMsg" class="welcome-text"></h2>
-    <p id="taskText" class="task-text">Initializing...</p>
-    <div class="meta-info">
-      <span id="percentage">0%</span>
-      <span>•</span>
-      <span id="timeRemaining">Calculating...</span>
+  <div class="glass-card flex flex-col items-center justify-center p-8 rounded-[2rem] w-full max-w-md mx-4 relative z-10">
+    
+    <!-- Circular Avatar Progress -->
+    <div class="relative w-40 h-40 flex justify-center items-center mb-6">
+      <div class="logo-glow"></div>
+      
+      <!-- Background Track -->
+      <svg class="absolute inset-0 w-full h-full transform -rotate-90 pointer-events-none" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="46" fill="none" class="stroke-black/10 dark:stroke-white/10" stroke-width="4"></circle>
+        <!-- The Dynamic Ring -->
+        <circle id="progressCircle" cx="50" cy="50" r="46" fill="none" class="stroke-blue-500 dark:stroke-purple-500 progress-ring drop-shadow-md" stroke-width="4" stroke-dasharray="289" stroke-dashoffset="289" stroke-linecap="round"></circle>
+      </svg>
+      
+      <!-- Logo inside -->
+      <img src="/images/zylo/Zylo_icon.png" alt="Zylo Logo" class="relative z-10 w-20 h-20 filter drop-shadow-lg pulse-logo" />
+      
+      <!-- Percentage Text -->
+      <div id="percentage" class="absolute -bottom-2 right-2 bg-blue-100 text-blue-700 dark:bg-purple-900/50 dark:text-purple-300 backdrop-blur font-bold text-xs px-2.5 py-1 rounded-full shadow border border-blue-200 dark:border-purple-500/30 z-20 transition-all font-display">0%</div>
     </div>
+
+    <!-- Text Content -->
+    <div class="text-center w-full">
+      <h2 id="welcomeMsg" class="font-display text-2xl font-bold tracking-tight welcome-text mb-2"></h2>
+      <p id="taskText" class="text-gray-600 dark:text-gray-300 text-sm mb-4 font-medium h-5">Initializing...</p>
+      
+      <!-- Meta Details -->
+      <div class="flex items-center justify-center gap-3 text-xs text-gray-500 dark:text-gray-400 font-medium">
+        <span id="timeRemaining">Calculating...</span>
+      </div>
+    </div>
+
+    <!-- Loading Tip -->
+    <div class="mt-8 bg-black/5 dark:bg-black/30 border border-black/5 dark:border-white/5 rounded-xl p-3 w-full text-center">
+      <div class="flex items-center justify-center gap-1.5 text-blue-500 dark:text-purple-400 mb-1">
+        <i data-feather="info" class="w-4 h-4"></i>
+        <span class="text-xs font-bold uppercase tracking-wider">Helpful Tip</span>
+      </div>
+      <p id="tipText" class="text-gray-600 dark:text-gray-400 text-xs leading-relaxed transition-opacity duration-500 opacity-100">You can customize your profile in Settings.</p>
+    </div>
+
+    <!-- Skip Action -->
+    <button id="skipBtn" onclick="skipLoading()" class="mt-6 text-xs text-gray-500 hover:text-gray-800 dark:text-gray-500 dark:hover:text-white transition-colors duration-300 opacity-0 pointer-events-none pb-2 border-b border-transparent hover:border-gray-800 dark:hover:border-white">
+      Skip Loading
+    </button>
   </div>
 
-  <!-- Progress Bar -->
-  <div class="progress-wrapper">
-    <div id="progressBar" class="progress-bar"></div>
-  </div>
-
-  <!-- Tip -->
-  <p id="tipText" class="loading-tip show">Tip: You can customize your profile in Settings.</p>
-
-  <!-- Skip Button -->
-  <button id="skipBtn" class="skip-btn" onclick="skipLoading()">Skip Loading</button>
-
+  <script src="/files/vendor/feather-icons.js"></script>
   <script>
+    feather.replace();
+
     const tasks = [
       { key: "init", label: "Initializing Zylo engine...", weight: 10, duration: 400 },
       { key: "verify", label: "Verifying session...", weight: 15, duration: 600 },
       {
         key: "user", label: "Fetching user profile...", weight: 20, duration: 800,
         action: async () => {
-          const u = localStorage.getItem("username");
-          if (u) { try { await fetch(`/api/get-user?identifier=${encodeURIComponent(u)}`); } catch {} }
+           const u = localStorage.getItem("username");
+           if (u) { try { await fetch(`/api/get-user?identifier=${encodeURIComponent(u)}`); } catch {} }
         },
       },
       { key: "theme", label: "Applying visual preferences...", weight: 10, duration: 300 },
@@ -280,22 +234,24 @@
     ];
 
     const tips = [
-      "Tip: You can customize your profile in Settings.",
-      "Tip: Join groups to meet new people!",
-      "Tip: Use markdown to format your messages.",
-      "Tip: Drag and drop files to share them quickly.",
-      "Tip: Right-click messages for more options.",
-      "Tip: Check the Explore page for public communities.",
+      "You can customize your profile in Settings.",
+      "Join groups to meet new people!",
+      "Use markdown to format your messages.",
+      "Drag and drop files to share them quickly.",
+      "Right-click messages for more options.",
+      "Check the Explore page for public communities.",
+      "Toggle dark mode by clicking your avatar."
     ];
 
     const textEl = document.getElementById("taskText");
-    const progressBar = document.getElementById("progressBar");
+    const progressCircle = document.getElementById("progressCircle");
     const percentageEl = document.getElementById("percentage");
     const timeEl = document.getElementById("timeRemaining");
     const welcomeEl = document.getElementById("welcomeMsg");
     const tipEl = document.getElementById("tipText");
     const skipBtn = document.getElementById("skipBtn");
 
+    const circleLength = 289; // SVG Circle Dasharray Constant
     let currentProgress = 0;
     let targetProgress = 0;
     let startTime = Date.now();
@@ -304,33 +260,38 @@
     const username = localStorage.getItem("username");
     welcomeEl.textContent = username ? `Welcome back, ${username}!` : "Welcome to Zylo";
 
-    if (localStorage.getItem("theme") === "dark") {
-      document.body.classList.add("dark");
-    }
-
+    // Dynamic Tip Interval
     let tipInterval = setInterval(() => {
-      tipEl.classList.remove("show");
+      tipEl.style.opacity = '0';
       setTimeout(() => {
         tipEl.textContent = tips[Math.floor(Math.random() * tips.length)];
-        tipEl.classList.add("show");
+        tipEl.style.opacity = '1';
       }, 500);
-    }, 4000);
+    }, 4500);
 
-    setTimeout(() => { skipBtn.classList.add("visible"); }, 3000);
+    // Show skip after 3 seconds
+    setTimeout(() => { 
+        skipBtn.style.opacity = '1';
+        skipBtn.style.pointerEvents = 'auto'; 
+    }, 3000);
 
+    // Main Progress visual update
     function updateProgress() {
       if (skipped) return;
       if (currentProgress < targetProgress) {
         currentProgress += (targetProgress - currentProgress) * 0.1;
         if (Math.abs(targetProgress - currentProgress) < 0.1) currentProgress = targetProgress;
       }
-      progressBar.style.width = `${currentProgress}%`;
+      
+      const offset = circleLength - (currentProgress / 100) * circleLength;
+      progressCircle.style.strokeDashoffset = offset;
       percentageEl.textContent = `${Math.round(currentProgress)}%`;
+      
       const elapsedTime = Date.now() - startTime;
       if (currentProgress > 0 && currentProgress < 100) {
         const totalEstimatedTime = (elapsedTime / currentProgress) * 100;
         const remaining = Math.max(0, Math.ceil((totalEstimatedTime - elapsedTime) / 1000));
-        timeEl.textContent = `${remaining}s remaining`;
+        timeEl.textContent = `Estimated time: ${remaining}s`;
       } else if (currentProgress >= 100) {
         timeEl.textContent = "Ready!";
       }
@@ -342,7 +303,13 @@
       let accumulatedWeight = 0;
       for (const task of tasks) {
         if (skipped) break;
-        textEl.textContent = task.label;
+        
+        textEl.style.opacity = 0;
+        setTimeout(() => {
+          textEl.textContent = task.label;
+          textEl.style.opacity = 1;
+        }, 200);
+
         const start = Date.now();
         if (task.action) { try { await task.action(); } catch (e) { console.error(e); } }
         const elapsed = Date.now() - start;
@@ -357,15 +324,22 @@
     function completeLoading() {
       targetProgress = 100;
       currentProgress = 100;
-      progressBar.style.width = "100%";
+      progressCircle.style.strokeDashoffset = 0;
       percentageEl.textContent = "100%";
       textEl.textContent = "Welcome!";
       timeEl.textContent = "Launching...";
       clearInterval(tipInterval);
+      
+      skipBtn.style.opacity = '0';
+      skipBtn.style.pointerEvents = 'none';
+
       setTimeout(() => {
-        document.body.style.transition = "opacity 0.8s ease";
+        document.body.style.transition = "opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1)";
         document.body.style.opacity = "0";
-        setTimeout(() => { window.location.href = "mainapp.html"; }, 800);
+        document.querySelector('.glass-card').style.transition = "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)";
+        document.querySelector('.glass-card').style.transform = "scale(1.05)";
+        
+        setTimeout(() => { window.location.href = "mainapp.html"; }, 600);
       }, 500);
     }
 
@@ -377,6 +351,7 @@
     requestAnimationFrame(updateProgress);
     window.addEventListener("load", processTasks);
 
+    // Click handler for catching hard reloads smoothly
     document.addEventListener("click", (e) => {
       const link = e.target.closest("a");
       if (link && link.hostname === window.location.hostname) {

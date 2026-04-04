@@ -56,12 +56,22 @@
         font-family: "DM Sans", sans-serif;
         background: linear-gradient(
           145deg,
+          #eceae3 0%,
+          #e3e1da 50%,
+          #d6d3cc 100%
+        );
+        min-height: 100vh;
+        overflow-x: hidden;
+        color: #2b2a26;
+      }
+      body.dark {
+        background: linear-gradient(
+          145deg,
           #0d0d1a 0%,
           #1a1a2e 50%,
           #16213e 100%
         );
-        min-height: 100vh;
-        overflow-x: hidden;
+        color: white;
       }
       body::before {
         content: "";
@@ -71,40 +81,52 @@
         right: 0;
         bottom: 0;
         background-image:
-          radial-gradient(
-            circle at 20% 30%,
-            rgba(59, 130, 246, 0.05) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 80% 70%,
-            rgba(99, 102, 241, 0.05) 0%,
-            transparent 50%
-          ),
-          url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+          radial-gradient(circle at 20% 30%, rgba(59,130,246,0.08) 0%, transparent 50%),
+          radial-gradient(circle at 80% 70%, rgba(59,130,246,0.06) 0%, transparent 50%),
+          url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         pointer-events: none;
         z-index: -1;
       }
+      body.dark::before {
+        background-image:
+          radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+          radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+          url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      }
       .card-glass {
-        background: rgba(255, 255, 255, 0.03);
+        background: rgba(255, 255, 255, 0.6);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.05);
+        transform: scale(0.95);
+        transform-origin: center;
+      }
+      .dark .card-glass {
+        background: rgba(255, 255, 255, 0.03);
         border: 1px solid rgba(255, 255, 255, 0.08);
         box-shadow:
           0 25px 50px -12px rgba(0, 0, 0, 0.5),
           inset 0 1px 0 rgba(255, 255, 255, 0.05);
-        transform: scale(0.95);
-        transform-origin: center;
       }
       .input-field {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        color: #1a1a1a;
         transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       }
+      .dark .input-field {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: white;
+      }
       .input-field:focus {
-        background: rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.9);
         border-color: rgba(59, 130, 246, 0.5);
         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+      .dark .input-field:focus {
+        background: rgba(255, 255, 255, 0.08);
       }
       .btn-primary {
         background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
@@ -139,11 +161,21 @@
         box-shadow: none;
       }
       .btn-secondary {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        color: #4b5563;
         transition: all 0.3s ease;
       }
+      .dark .btn-secondary {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #d1d5db;
+      }
       .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.8);
+        border-color: rgba(0, 0, 0, 0.1);
+      }
+      .dark .btn-secondary:hover {
         background: rgba(255, 255, 255, 0.1);
         border-color: rgba(255, 255, 255, 0.2);
       }
@@ -169,14 +201,22 @@
         animation: ringPulse 3s ease-in-out infinite;
       }
       .social-btn {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid rgba(0, 0, 0, 0.05);
         transition: all 0.2s ease;
       }
+      .dark .social-btn {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
       .social-btn:hover {
+        background: rgba(255, 255, 255, 0.9);
+        border-color: rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+      }
+      .dark .social-btn:hover {
         background: rgba(255, 255, 255, 0.08);
         border-color: rgba(255, 255, 255, 0.15);
-        transform: translateY(-2px);
       }
       .error-msg {
         color: #f87171;
@@ -204,7 +244,7 @@
 
   <body
     id="body"
-    class="min-h-screen flex flex-col items-center justify-center px-4 text-white"
+    class="min-h-screen flex flex-col items-center justify-center px-4 text-gray-900 dark:text-white"
   >
     <!-- Floating Decorative Icons -->
     <div
@@ -231,19 +271,22 @@
 
     <!-- Top Controls -->
     <div class="absolute top-5 right-5 z-50 flex gap-3">
-      <select
-        id="pageLanguageSelect"
-        onchange="window.setLanguage(this.value)"
-        class="bg-white/5 backdrop-blur-md text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-white/10 focus:outline-none focus:border-blue-400/50 cursor-pointer hover:bg-white/10 transition-colors"
-      >
-        <option value="en" class="bg-gray-900">English</option>
-        <option value="es" class="bg-gray-900">Español</option>
-        <option value="vi" class="bg-gray-900">Tiếng Việt</option>
-      </select>
+      <div class="relative flex items-center">
+        <select
+          id="pageLanguageSelect"
+          onchange="window.setLanguage(this.value)"
+          class="appearance-none bg-black/5 dark:bg-white/5 backdrop-blur-md text-gray-700 dark:text-gray-300 pl-3 pr-8 py-1.5 rounded-lg text-sm border border-black/10 dark:border-white/10 focus:outline-none focus:border-blue-400/50 cursor-pointer hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+        >
+          <option value="en" class="bg-white dark:bg-gray-900 text-black dark:text-white">English</option>
+          <option value="es" class="bg-white dark:bg-gray-900 text-black dark:text-white">Español</option>
+          <option value="vi" class="bg-white dark:bg-gray-900 text-black dark:text-white">Tiếng Việt</option>
+        </select>
+        <i data-feather="chevron-down" class="absolute right-2.5 w-4 h-4 pointer-events-none text-gray-500 dark:text-gray-400"></i>
+      </div>
       <button
         id="toggleTheme"
         aria-label="Toggle Dark Mode"
-        class="flex items-center gap-1.5 bg-white/5 backdrop-blur-md text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-white/10 hover:bg-white/10 transition-colors"
+        class="flex items-center gap-1.5 bg-black/5 dark:bg-white/5 backdrop-blur-md text-gray-700 dark:text-gray-300 px-3 py-1.5 rounded-lg text-sm border border-black/10 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
       >
         <i id="themeIcon" data-feather="sun" class="w-4 h-4"></i>
         <span id="themeText" class="hidden sm:inline">Light</span>
@@ -269,7 +312,7 @@
         <div id="account-list" class="space-y-2 max-h-48 overflow-y-auto no-scrollbar scrollbar-thumb-discord-gray-900 pr-1">
           <!-- Populated by JS -->
         </div>
-        <button onclick="switchToAddAccount()" class="w-full py-3 rounded-xl font-medium text-gray-300 btn-secondary flex items-center justify-center gap-2 hover:bg-white/5 transition-all text-sm">
+        <button onclick="switchToAddAccount()" class="w-full py-3 rounded-xl font-medium text-gray-700 dark:text-gray-300 btn-secondary flex items-center justify-center gap-2 hover:bg-white/5 transition-all text-sm">
           <i data-feather="plus" class="w-4 h-4"></i>
           Add another account
         </button>
@@ -278,18 +321,18 @@
       <!-- Login Inputs -->
       <div id="login-inputs" class="space-y-4">
         <div>
-          <label for="username" class="block text-xs font-semibold text-gray-300 uppercase tracking-widest mb-1.5 ml-1">Account</label>
+          <label for="username" class="block text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-1.5 ml-1">Account</label>
           <input id="username" type="text" placeholder="Username or Email" data-i18n-placeholder="auth.usernameOrEmail" aria-label="Username or Email"
-            class="input-field w-full px-4 py-3 rounded-xl text-white placeholder-gray-500 focus:outline-none font-body text-sm transition-all" />
+            class="input-field w-full px-4 py-3 rounded-xl text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none font-body text-sm transition-all" />
         </div>
 
         <div>
-          <label for="password" class="block text-xs font-semibold text-gray-300 uppercase tracking-widest mb-1.5 ml-1">Password</label>
+          <label for="password" class="block text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-1.5 ml-1">Password</label>
           <div class="relative">
             <input id="password" type="password" placeholder="Password" data-i18n-placeholder="auth.password" aria-label="Password"
-              class="input-field w-full px-4 py-3 pr-12 rounded-xl text-white placeholder-gray-500 focus:outline-none font-body text-sm transition-all" />
+              class="input-field w-full px-4 py-3 pr-12 rounded-xl text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none font-body text-sm transition-all" />
             <span id="togglePassword" role="button" tabindex="0" aria-label="Toggle password visibility"
-              class="password-toggle absolute top-1/2 -translate-y-1/2 right-4 text-gray-400 cursor-pointer p-1 hover:text-white transition-colors">
+              class="password-toggle absolute top-1/2 -translate-y-1/2 right-4 text-gray-500 dark:text-gray-400 cursor-pointer p-1 hover:text-white transition-colors">
               <i id="eyeIcon" data-feather="eye" class="w-5 h-5"></i>
             </span>
           </div>
@@ -305,12 +348,12 @@
           <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-500/10 mb-3">
             <i data-feather="shield" class="w-6 h-6 text-green-400"></i>
           </div>
-          <p class="text-sm text-gray-400" data-i18n="auth.enterCode">Enter your 2FA code</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="auth.enterCode">Enter your 2FA code</p>
         </div>
         <input id="twofa-code" type="text" maxlength="6" placeholder="000000" aria-label="2FA Code"
           class="input-field w-full px-4 py-3 rounded-xl text-white text-center text-2xl tracking-[0.5em] font-mono focus:outline-none" />
         <button id="verify2faBtn" onclick="verify2FA()" aria-label="Verify 2FA Code"
-          class="btn-primary w-full py-3 rounded-xl font-semibold text-white flex items-center justify-center gap-2">
+          class="btn-primary w-full py-3 rounded-xl font-semibold text-gray-900 dark:text-white flex items-center justify-center gap-2">
           <svg id="verify2faSpinner" class="w-5 h-5 animate-spin hidden" fill="none" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" class="opacity-25"/>
             <path d="M4 12a8 8 0 018-8" stroke="currentColor" stroke-width="4" class="opacity-75"/>
@@ -323,7 +366,7 @@
       </div>
 
       <!-- Remember Me -->
-      <div class="flex items-center gap-2 mt-4 text-sm text-gray-400">
+      <div class="flex items-center gap-2 mt-4 text-sm text-gray-600 dark:text-gray-400">
         <input type="checkbox" id="rememberMe" class="accent-blue-500 w-4 h-4" aria-label="Remember me" />
         <label for="rememberMe" data-i18n="auth.rememberMe">Remember me</label>
       </div>
@@ -340,7 +383,7 @@
 
       <!-- Biometric Login -->
       <button id="bioLoginBtn" onclick="bioLogin()"
-        class="hidden w-full mt-3 py-3.5 rounded-xl font-medium text-gray-300 btn-secondary flex items-center justify-center gap-2 hover:bg-white/5 transition-all">
+        class="hidden w-full mt-3 py-3.5 rounded-xl font-medium text-gray-700 dark:text-gray-300 btn-secondary flex items-center justify-center gap-2 hover:bg-white/5 transition-all">
         <i data-feather="key" class="w-4 h-4"></i>
         <span id="bioLoginBtnText" data-i18n="auth.signInWithPasskey">Sign in with Passkey</span>
       </button>
@@ -350,7 +393,7 @@
 
       <!-- Social Login -->
       <div id="social-login-container" class="mt-6">
-        <div class="flex items-center gap-3 text-sm text-gray-500 mb-4">
+        <div class="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400 mb-4">
           <hr class="flex-grow border-white/10" />
           <span data-i18n="auth.orSignInWith">or sign in with</span>
           <hr class="flex-grow border-white/10" />
@@ -382,7 +425,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="mt-8 text-center text-xs text-gray-500">
+    <footer class="mt-8 text-center text-xs text-gray-500 dark:text-gray-400">
       <p class="mb-2">&copy; 2025 Zylo Inc. All rights reserved.</p>
       <div class="space-x-3">
         <button
@@ -539,7 +582,7 @@
 
         accounts.forEach(acc => {
           const btn = document.createElement("button");
-          btn.className = "w-full p-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition flex items-center justify-between group";
+          btn.className = "w-full p-3 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/10 transition flex items-center justify-between group";
           
           const autoBadge = (autoLoginEnabled && acc.loginCount >= 5) ? `<span class="text-[10px] font-bold bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full ml-2">Auto</span>` : '';
 
@@ -547,7 +590,7 @@
             <div class="flex items-center gap-3">
               <img src="${acc.avatar || '/images/default_avatar.png'}" class="w-10 h-10 rounded-full object-cover border border-white/10 group-hover:border-blue-500/50 transition">
               <div class="text-left flex flex-col">
-                <span class="text-sm font-bold text-white flex items-center">${acc.username} ${autoBadge}</span>
+                <span class="text-sm font-bold text-gray-900 dark:text-white flex items-center">${acc.username} ${autoBadge}</span>
                 <span class="text-xs text-gray-400">${acc.usertag || ''} • ${acc.loginCount || 1} logins</span>
               </div>
             </div>
@@ -596,12 +639,14 @@
         const savedTheme = localStorage.getItem("theme");
         if (savedTheme === "dark" || !savedTheme) {
           body.classList.add("dark");
+          document.documentElement.classList.add("dark");
           document.getElementById("themeText").textContent = "Dark";
           document
             .getElementById("themeIcon")
             .setAttribute("data-feather", "moon");
         } else {
           body.classList.remove("dark");
+          document.documentElement.classList.remove("dark");
           document.getElementById("themeText").textContent = "Light";
           document
             .getElementById("themeIcon")
@@ -615,6 +660,7 @@
       toggleBtn.onclick = () => {
         body.classList.toggle("dark");
         const isDark = body.classList.contains("dark");
+        document.documentElement.classList.toggle("dark", isDark);
         document.getElementById("themeText").textContent = isDark
           ? "Dark"
           : "Light";

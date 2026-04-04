@@ -45,17 +45,28 @@ function renderFriendsDashboard() {
         });
 
         div.innerHTML = `
-              <div class="flex items-center gap-3 flex-1" onclick="openDM('${username}')">
-                  <img src="/images/default_avatar.png" class="row-avatar w-10 h-10 rounded-full bg-discord-gray-700 object-cover border border-black/20 shadow-sm relative z-10">
-                  <div class="flex flex-col justify-center">
-                      <div class="font-semibold text-discord-gray-100 text-[15px] leading-tight flex items-center">${username}</div>
-                      <div class="text-[13px] text-[#949ba4] font-medium leading-tight group-hover:text-[#dbdee1] transition-colors">${subtext}</div>
+              <div class="flex items-center gap-3 flex-1 overflow-hidden" onclick="openDM('${username}')">
+                  <div class="avatar-container relative shrink-0 w-10 h-10">
+                      <img src="/images/default_avatar.png" class="row-avatar w-full h-full rounded-full bg-discord-gray-700 object-cover border border-black/20 shadow-sm relative z-10">
+                      <div class="avatar-frame absolute inset-0 pointer-events-none rounded-full"></div>
+                      <div class="avatar-effect absolute inset-0 pointer-events-none rounded-full"></div>
+                  </div>
+                  <div class="flex flex-col justify-center overflow-hidden">
+                      <div class="font-semibold text-discord-gray-100 text-[15px] leading-tight flex items-center truncate">${username}</div>
+                      <div class="text-[13px] text-[#949ba4] font-medium leading-tight group-hover:text-[#dbdee1] transition-colors truncate">${subtext}</div>
                   </div>
               </div>
               <div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   ${actions}
               </div>
       `;
+        
+        if (window.applyUserCosmetics) {
+            setTimeout(() => {
+                const avatarContainer = div.querySelector('.avatar-container');
+                if (avatarContainer) window.applyUserCosmetics(username, avatarContainer);
+            }, 0);
+        }
         return div;
     };
 
@@ -204,11 +215,11 @@ function renderSidebarList() {
 
         // Avatar Container
         const avatarContainer = document.createElement('div');
-        avatarContainer.className = "relative mr-3 shrink-0";
+        avatarContainer.className = "avatar-container relative mr-3 shrink-0 w-8 h-8";
 
         const img = document.createElement('img');
         img.src = '/images/default_avatar.png';
-        img.className = "w-8 h-8 rounded-full bg-discord-gray-700 object-cover";
+        img.className = "w-full h-full rounded-full bg-discord-gray-700 object-cover relative z-10";
         
         // Use getUserAvatarUrl
         if(window.getUserAvatarUrl) {
@@ -217,10 +228,14 @@ function renderSidebarList() {
 
         // Status Dot
         const statusDot = document.createElement('div');
-        statusDot.className = "status-dot w-2.5 h-2.5 rounded-full absolute -bottom-0.5 -right-0.5 border-2 border-discord-gray-900 bg-gray-500";
+        statusDot.className = "status-dot w-3 h-3 rounded-full absolute -bottom-0.5 -right-0.5 border-[2.5px] border-[#2b2d31] bg-gray-500 z-30 transition-colors";
 
         avatarContainer.appendChild(img);
         avatarContainer.appendChild(statusDot);
+
+        if (window.applyUserCosmetics) {
+            window.applyUserCosmetics(friend, avatarContainer);
+        }
 
         const nameSpan = document.createElement('span');
         nameSpan.className = "font-medium truncate flex-1";

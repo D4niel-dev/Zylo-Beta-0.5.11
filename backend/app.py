@@ -1207,6 +1207,12 @@ def handle_send_group_message(data):
                 'read_by': [username], # Sender has read it
                 'ts': int(__import__('time').time())
             }
+            msgs = g.get('messages') or []
+            msgs.append(entry)
+            all_groups[idx]['messages'] = msgs
+            save_groups(all_groups)
+            emit('receive_group_message', entry, room=group_id)
+            return
 def handle_send_group_file(data):
     """Handle file sharing within a group room."""
     group_id = (data or {}).get('groupId')
@@ -2145,8 +2151,7 @@ def grant_badge(username, badge_id):
     
     # Notify user of badge unlock
     try:
-        from flask_socketio import emit
-        emit('badge_unlock', {
+        socketio.emit('badge_unlock', {
             'username': username,
             'badge_id': badge_id
         }, room=f"user_{username}")

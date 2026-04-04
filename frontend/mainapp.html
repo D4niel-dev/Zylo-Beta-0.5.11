@@ -588,15 +588,6 @@
           </button>
           <button
             type="button"
-            id="tabBtnAdvance"
-            class="settings-tab sub-panel-item w-full text-left"
-            data-target="advanceSettings"
-          >
-            <i data-feather="cpu" class="w-5 h-5 mr-2"></i>
-            <span data-i18n="settings.advance">Advance</span>
-          </button>
-          <button
-            type="button"
             id="tabBtnSounds"
             class="settings-tab sub-panel-item w-full text-left"
             data-target="soundSettings"
@@ -612,6 +603,15 @@
           >
             <i data-feather="shield" class="w-5 h-5 mr-2"></i>
             <span data-i18n="settings.account">My Account</span>
+          </button>
+          <button
+            type="button"
+            id="tabBtnAdvance"
+            class="settings-tab sub-panel-item w-full text-left"
+            data-target="advanceSettings"
+          >
+            <i data-feather="cpu" class="w-5 h-5 mr-2"></i>
+            <span data-i18n="settings.advance">Advance</span>
           </button>
           <button
             type="button"
@@ -5302,7 +5302,10 @@
             <i data-feather="monitor" class="w-5 h-5"></i>
           </div>
           <div>
-            <h3 class="text-lg font-bold text-white tracking-wide">Theme Designer</h3>
+            <h3 class="text-lg font-bold text-white tracking-wide flex items-center gap-2">
+              Theme Designer
+              <span class="text-[10px] bg-yellow-500/10 text-yellow-500 px-2 py-0.5 rounded-full uppercase tracking-widest font-bold border border-yellow-500/20">Beta</span>
+            </h3>
             <p class="text-xs text-discord-gray-400">Craft your ultimate Zylo experience</p>
           </div>
         </div>
@@ -5320,6 +5323,12 @@
             <i data-feather="x" class="w-4 h-4"></i>
           </button>
         </div>
+      </div>
+
+      <!-- Beta Warning Banner -->
+      <div class="bg-yellow-500/10 border-b border-yellow-500/20 px-6 py-2 flex items-center justify-center gap-2 flex-shrink-0">
+        <i data-feather="alert-triangle" class="w-4 h-4 text-yellow-500"></i>
+        <p class="text-[11px] md:text-xs text-yellow-500 font-medium text-center">This feature is still in development! There will be bugs and changes throughout the app updates.</p>
       </div>
 
       <!-- Main Body -->
@@ -10224,19 +10233,26 @@
         }
 
         function clearInlineBackground() {
-          const b = document.body.style;
-          b.background = "";
-          b.backgroundImage = "";
-          b.backgroundSize = "";
-          b.backgroundAttachment = "";
-          // Clear custom theme vars
-          b.removeProperty("--navbar-bg");
-          b.removeProperty("--sidebar-bg");
-          b.removeProperty("--panel-bg");
-          b.removeProperty("--text-color");
-          b.removeProperty("--accent-color");
-          b.removeProperty("--main-bg");
-          document.body.classList.remove("theme-custom");
+          const props = [
+            "--navbar-bg", "--sidebar-bg", "--panel-bg", "--text-color", "--accent-color", "--main-bg",
+            "--header-bg", "--user-panel-bg", "--bg-hover", "--bg-active",
+            "--color-discord-gray-900", "--color-discord-gray-800", "--color-discord-gray-700",
+            "--color-discord-gray-600", "--color-discord-gray-500", "--color-discord-gray-400",
+            "--color-discord-gray-300", "--color-discord-blurple"
+          ];
+          
+          const clearStyles = (el) => {
+            if (!el) return;
+            el.style.background = "";
+            el.style.backgroundImage = "";
+            el.style.backgroundSize = "";
+            el.style.backgroundAttachment = "";
+            props.forEach(p => el.style.removeProperty(p));
+            el.classList.remove("theme-custom");
+          };
+          
+          clearStyles(document.body);
+          clearStyles(document.documentElement);
         }
 
         function applyBackground() {
@@ -11995,6 +12011,7 @@
 
         function applyThemeVars(t) {
           document.body.classList.add("theme-custom");
+          document.documentElement.classList.add("theme-custom");
           
           const hex2rgb = (c, def) => {
             if(typeof c === 'string' && c.startsWith('#')) {
@@ -12006,50 +12023,59 @@
             return def;
           };
 
-          document.body.style.setProperty("--navbar-bg", t.ui.navbarBg);
-          document.body.style.setProperty("--sidebar-bg", t.ui.sidebarBg);
-          document.body.style.setProperty("--panel-bg", t.ui.panelBg);
-          document.body.style.setProperty("--text-color", t.textColor);
-          document.body.style.setProperty("--accent-color", t.accentColor);
-          document.body.style.setProperty("--main-bg", t.ui.mainBg || "#0f172a");
-          document.body.style.setProperty("--header-bg", t.ui.headerBg || t.ui.navbarBg);
-          document.body.style.setProperty("--user-panel-bg", t.ui.userPanelBg || t.ui.sidebarBg);
-          document.body.style.setProperty("--bg-hover", t.ui.hoverBg || "rgba(255,255,255,0.1)");
-          document.body.style.setProperty("--bg-active", t.ui.activeBg || t.accentColor || "#5865F2");
+          const setProp = (k, v) => {
+            document.body.style.setProperty(k, v);
+            document.documentElement.style.setProperty(k, v);
+          };
+
+          setProp("--navbar-bg", t.ui.navbarBg);
+          setProp("--sidebar-bg", t.ui.sidebarBg);
+          setProp("--panel-bg", t.ui.panelBg);
+          setProp("--text-color", t.textColor);
+          setProp("--accent-color", t.accentColor);
+          setProp("--main-bg", t.ui.mainBg || "#0f172a");
+          setProp("--header-bg", t.ui.headerBg || t.ui.navbarBg);
+          setProp("--user-panel-bg", t.ui.userPanelBg || t.ui.sidebarBg);
+          setProp("--bg-hover", t.ui.hoverBg || "rgba(255,255,255,0.1)");
+          setProp("--bg-active", t.ui.activeBg || t.accentColor || "#5865F2");
           
           // Inject RGB tokens for Tailwind's dynamic opacity classes
-          document.body.style.setProperty("--color-discord-gray-900", hex2rgb(t.ui.headerBg || t.ui.navbarBg, "32 34 37"));
-          document.body.style.setProperty("--color-discord-gray-800", hex2rgb(t.ui.sidebarBg, "47 49 54"));
-          document.body.style.setProperty("--color-discord-gray-700", hex2rgb(t.ui.mainBg || t.ui.navbarBg, "54 57 63"));
-          document.body.style.setProperty("--color-discord-gray-600", hex2rgb(t.ui.panelBg, "64 68 75"));
-          document.body.style.setProperty("--color-discord-gray-500", hex2rgb(t.ui.userPanelBg || t.ui.sidebarBg, "79 84 92"));
-          document.body.style.setProperty("--color-discord-gray-400", hex2rgb(t.textColor, "185 187 190")); 
-          document.body.style.setProperty("--color-discord-gray-300", hex2rgb(t.textColor, "220 221 222"));
-          document.body.style.setProperty("--color-discord-blurple", hex2rgb(t.accentColor, "88 101 242"));
+          setProp("--color-discord-gray-900", hex2rgb(t.ui.headerBg || t.ui.navbarBg, "32 34 37"));
+          setProp("--color-discord-gray-800", hex2rgb(t.ui.sidebarBg, "47 49 54"));
+          setProp("--color-discord-gray-700", hex2rgb(t.ui.mainBg || t.ui.navbarBg, "54 57 63"));
+          setProp("--color-discord-gray-600", hex2rgb(t.ui.panelBg, "64 68 75"));
+          setProp("--color-discord-gray-500", hex2rgb(t.ui.userPanelBg || t.ui.sidebarBg, "79 84 92"));
+          setProp("--color-discord-gray-400", hex2rgb(t.textColor, "185 187 190")); 
+          setProp("--color-discord-gray-300", hex2rgb(t.textColor, "220 221 222"));
+          setProp("--color-discord-blurple", hex2rgb(t.accentColor, "88 101 242"));
         }
 
         function applyThemeBackground(bg) {
-          const s = document.body.style;
-          s.background = "";
-          s.backgroundImage = "";
-          s.backgroundSize = "";
-          s.backgroundAttachment = "";
+          const applyBg = (s) => {
+            s.background = "";
+            s.backgroundImage = "";
+            s.backgroundSize = "";
+            s.backgroundAttachment = "";
 
-          if (bg.mode === "solid") {
-            s.background = bg.solid;
-          } else if (bg.mode === "gradient") {
-            const angle = bg.gradient?.angle ?? 135;
-            s.background = `linear-gradient(${angle}deg, ${bg.gradient?.from}, ${bg.gradient?.to})`;
-            s.backgroundAttachment = "fixed";
-            s.backgroundSize = "400% 400%";
-          } else if (bg.mode === "image" && bg.imageDataUrl) {
-            s.backgroundImage = `url(${bg.imageDataUrl})`;
-            s.backgroundSize = "cover";
-            s.backgroundAttachment = "fixed";
-          } else if (bg.mode === "animated") {
-            s.background = "linear-gradient(135deg, #1e293b, #0f172a)";
-            s.backgroundSize = "400% 400%";
-          }
+            if (bg.mode === "solid") {
+              s.background = bg.solid;
+            } else if (bg.mode === "gradient") {
+              const angle = bg.gradient?.angle ?? 135;
+              s.background = `linear-gradient(${angle}deg, ${bg.gradient?.from}, ${bg.gradient?.to})`;
+              s.backgroundAttachment = "fixed";
+              s.backgroundSize = "400% 400%";
+            } else if (bg.mode === "image" && bg.imageDataUrl) {
+              s.backgroundImage = `url(${bg.imageDataUrl})`;
+              s.backgroundSize = "cover";
+              s.backgroundAttachment = "fixed";
+            } else if (bg.mode === "animated") {
+              s.background = "linear-gradient(135deg, #1e293b, #0f172a)";
+              s.backgroundSize = "400% 400%";
+            }
+          };
+
+          applyBg(document.body.style);
+          applyBg(document.documentElement.style);
         }
 
         function renderPreview() {
@@ -12155,28 +12181,31 @@
 
         btnReset?.addEventListener("click", () => {
           if (!confirm("Revert all settings to Zylo default?")) return;
-          iNavbar.value = "#0b1020";
-          iSidebar.value = "#111827";
-          iPanel.value = "rgba(255,255,255,0.7)";
-          iText.value = "#ffffff";
-          iAccent.value = "#3b82f6";
-          iMainBg.value = "#0f172a";
+          if (iNavbar) iNavbar.value = "#0b1020";
+          if (iSidebar) iSidebar.value = "#111827";
+          if (iPanel) iPanel.value = "#b3b3b3";
+          if (iText) iText.value = "#ffffff";
+          if (iAccent) iAccent.value = "#3b82f6";
+          if (iMainBg) iMainBg.value = "#0f172a";
+          if (iHeader) iHeader.value = "#0b1020";
+          if (iUserPanel) iUserPanel.value = "#111827";
+          if (iHover) iHover.value = "#3b82f6";
 
           const gradRadio = radios.find((r) => r.value === "gradient");
           if (gradRadio) gradRadio.checked = true;
 
-          iGradFrom.value = "#1e293b";
-          iGradTo.value = "#0f172a";
-          iGradAngle.value = "135";
-
-          // Actually apply these defaults immediately
-          const t = themeFromInputs();
-          applyThemeVars(t);
-          applyThemeBackground(t.background);
-          renderPreview();
+          if (iGradFrom) iGradFrom.value = "#1e293b";
+          if (iGradTo) iGradTo.value = "#0f172a";
+          if (iGradAngle) iGradAngle.value = "135";
 
           // Clear saved custom theme to avoid persistence
           localStorage.removeItem("currentCustomTheme");
+          
+          // Revert completely to default dark mode theme and close editor
+          if (typeof applyThemeMode === "function") {
+              applyThemeMode("dark");
+          }
+          close();
         });
 
         // Animated preset selection
@@ -12903,6 +12932,20 @@
       </button>
     </div>
 
+    <!-- Zylo Slayer RPG Modules -->
+    <script src="files/js/game/zs-main.js"></script>
+    <script src="files/js/game/zs-elements.js"></script>
+    <script src="files/js/game/zs-data.js"></script>
+    <script src="files/js/game/zs-skills.js"></script>
+    <script src="files/js/game/zs-combat.js"></script>
+    <script src="files/js/game/zs-quests.js"></script>
+    <script src="files/js/game/zs-offline.js"></script>
+    <script src="files/js/game/zs-spirits.js"></script>
+    <script src="files/js/game/zs-craft.js"></script>
+    <script src="files/js/game/zs-summon.js"></script>
+    <script src="files/js/game/zs-upgrades.js"></script>
+    <script src="files/js/game/zs-stages.js"></script>
+    <script src="files/js/game/zs-ui.js"></script>
     <script src="files/js/apps.js"></script>
     <script>
       function toggleProfileMore() {
@@ -14279,6 +14322,144 @@
         </div>
       </div>
     </div>
+    
+    <!-- Toast Notification Container -->
+    <div id="notification-container"></div>
+    
+    <script>
+    /* ==========================================================================
+       DISCORD-STYLE GLOBAL TOAST NOTIFICATIONS
+       ========================================================================== */
+    (function() {
+      function initNotifications() {
+        if (!window.socket) return setTimeout(initNotifications, 500);
+    
+        // Audio for notification (fail gracefully if it doesn't exist)
+        const pingAudio = new Audio('/files/audio/ping.mp3'); 
+    
+        // Helper to escape HTML to prevent XSS in toasts
+        function escapeHtml(unsafe) {
+            return (unsafe || '').toString()
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+    
+        window.showGlobalNotification = function(type, title, subtitle, message, avatarUrl, onClickCallback) {
+            const container = document.getElementById('notification-container');
+            if (!container) return;
+    
+            const toast = document.createElement('div');
+            toast.className = `notification-toast toast-${type}`;
+            
+            let safeAvatar = escapeHtml(avatarUrl) || '/images/default_avatar.png';
+            let safeTitle = escapeHtml(title);
+            let safeSubtitle = escapeHtml(subtitle);
+            let safeMessage = escapeHtml(message);
+    
+            toast.innerHTML = `
+                <img src="${safeAvatar}" class="avatar" onerror="this.src='/images/default_avatar.png'" alt="avatar">
+                <div class="toast-content">
+                    <div class="toast-title-row">
+                        <span class="toast-title">${safeTitle}</span>
+                        <span class="toast-subtitle">${safeSubtitle}</span>
+                    </div>
+                    <div class="toast-message">${safeMessage}</div>
+                </div>
+            `;
+            
+            toast.addEventListener('click', () => {
+                if (onClickCallback) onClickCallback();
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 400);
+            });
+    
+            container.appendChild(toast);
+    
+            // Attempt to play sound (may be blocked by browser policy until interaction)
+            pingAudio.play().catch(e => console.log('Notification audio suppressed by browser policy.'));
+    
+            // Slide in animation
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    toast.classList.add('show');
+                });
+            });
+    
+            // Auto dismiss after 4.5 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 400);
+            }, 4500);
+        };
+    
+        window.socket.on('receive_dm', (data) => {
+            // Unpack data (handle varying formats based on event mapping)
+            const msg = data.message || data; 
+            const sender = msg.from || data.from;
+            const recipient = msg.to || data.to;
+            const currentUser = localStorage.getItem('savedUsername');
+            
+            // Only notify if we are the recipient
+            if (sender === currentUser) return;
+            
+            // If we are currently looking at this DM, do NOT show a toast
+            const msgPanel = document.getElementById('sub-panel-messages');
+            const isMsgPanelVisible = msgPanel && !msgPanel.classList.contains('hidden');
+            if (isMsgPanelVisible && typeof activeFriendChat !== 'undefined' && activeFriendChat === sender) {
+                return; 
+            }
+    
+            const senderAvatar = msg.avatar || '/images/default_avatar.png';
+            const senderName = msg.username || msg.sender_name || sender;
+            const msgText = msg.message || "Sent an attachment"; 
+            
+            window.showGlobalNotification('dm', senderName, 'Direct Message', msgText, senderAvatar, () => {
+                // Navigate to friend messages
+                if (typeof navigateTo === 'function') navigateTo('messages');
+                // Open specifically this DM using global openDM function
+                if (typeof openDM === 'function') openDM(sender);
+            });
+        });
+    
+        window.socket.on('group_message', (data) => {
+            // If we are currently looking at this group, do NOT show a toast
+            const groupPanel = document.getElementById('sub-panel-group');
+            const isGroupPanelVisible = groupPanel && !groupPanel.classList.contains('hidden');
+            if (isGroupPanelVisible && typeof currentGroupId !== 'undefined' && currentGroupId == data.groupId) {
+                return;
+            }
+    
+            // Explicitly exclude the global channel (if it arrives here somehow)
+            if (data.channel === 'community') return; 
+            // Only relevant if it's not our own message
+            const currentUser = localStorage.getItem('savedUsername');
+            if (data.from === currentUser || data.username === currentUser) return;
+    
+            const senderAvatar = data.avatar || '/images/default_avatar.png';
+            const senderName = data.username || data.from || 'User';
+            const msgText = data.message || "Sent an attachment"; 
+            const groupName = data.groupName || data.channel || 'Group';
+    
+            window.showGlobalNotification('group', `${senderName} in ${groupName}`, 'Group Message', msgText, senderAvatar, () => {
+                if (typeof navigateTo === 'function') navigateTo('home');
+                if (typeof selectGroup === 'function') selectGroup(data.groupId);
+            });
+        });
+        
+        // Excluded: socket.on('message') -> For Global Community chat. We do not show notifications for these!
+      }
+    
+      // Ensure DOM is ready, defer initialization
+      if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initNotifications);
+      } else {
+          initNotifications();
+      }
+    })();
+    </script>
     <script src="js/icon-switcher.js"></script>
   </body>
 </html>

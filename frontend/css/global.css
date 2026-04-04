@@ -193,15 +193,15 @@ body {
 }
 
 /* Light theme - specific UI elements */
-body:not(.dark) nav {
+body:not(.dark):not(.theme-custom) nav {
   background-color: #f2f3f5;
 }
 
-body:not(.dark) aside {
+body:not(.dark):not(.theme-custom) aside {
   background-color: #f9fafb;
 }
 
-body:not(.dark) main {
+body:not(.dark):not(.theme-custom) main {
   background-color: #ffffff;
 }
 
@@ -2420,224 +2420,224 @@ body.dark .avatar-img {
    ======================================== */
 
 /* Override all discord-gray backgrounds for light theme */
-body:not(.dark) .bg-discord-gray-900,
-body:not(.dark) [class*="bg-discord-gray-900"] {
+body:not(.dark):not(.theme-custom) .bg-discord-gray-900,
+body:not(.dark):not(.theme-custom) [class*="bg-discord-gray-900"] {
   background-color: #e5e7eb !important;
 }
 
-body:not(.dark) .bg-discord-gray-800,
-body:not(.dark) [class*="bg-discord-gray-800"] {
+body:not(.dark):not(.theme-custom) .bg-discord-gray-800,
+body:not(.dark):not(.theme-custom) [class*="bg-discord-gray-800"] {
   background-color: #f3f4f6 !important;
 }
 
-body:not(.dark) .bg-discord-gray-700,
-body:not(.dark) [class*="bg-discord-gray-700"] {
+body:not(.dark):not(.theme-custom) .bg-discord-gray-700,
+body:not(.dark):not(.theme-custom) [class*="bg-discord-gray-700"] {
   background-color: #f9fafb !important;
 }
 
-body:not(.dark) .bg-discord-gray-600,
-body:not(.dark) [class*="bg-discord-gray-600"] {
+body:not(.dark):not(.theme-custom) .bg-discord-gray-600,
+body:not(.dark):not(.theme-custom) [class*="bg-discord-gray-600"] {
   background-color: #e5e7eb !important;
 }
 
-body:not(.dark) .bg-discord-gray-500,
-body:not(.dark) [class*="bg-discord-gray-500"] {
+body:not(.dark):not(.theme-custom) .bg-discord-gray-500,
+body:not(.dark):not(.theme-custom) [class*="bg-discord-gray-500"] {
   background-color: #d1d5db !important;
 }
 
 /* Override text colors for light theme */
-body:not(.dark) .text-discord-gray-400,
-body:not(.dark) [class*="text-discord-gray-400"] {
+body:not(.dark):not(.theme-custom) .text-discord-gray-400,
+body:not(.dark):not(.theme-custom) [class*="text-discord-gray-400"] {
   color: #6b7280 !important;
 }
 
-body:not(.dark) .text-discord-gray-300,
-body:not(.dark) [class*="text-discord-gray-300"] {
+body:not(.dark):not(.theme-custom) .text-discord-gray-300,
+body:not(.dark):not(.theme-custom) [class*="text-discord-gray-300"] {
   color: #374151 !important;
 }
 
-body:not(.dark) .text-white,
-body:not(.dark) [class*="text-white"]:not(button) {
+body:not(.dark):not(.theme-custom) .text-white,
+body:not(.dark):not(.theme-custom) [class*="text-white"]:not(button) {
   color: #111827 !important;
 }
 
 /* Override borders for light theme */
-body:not(.dark) .border-discord-gray-900 {
+body:not(.dark):not(.theme-custom) .border-discord-gray-900 {
   border-color: #d1d5db !important;
 }
 
-body:not(.dark) .border-discord-gray-800 {
+body:not(.dark):not(.theme-custom) .border-discord-gray-800 {
   border-color: #e5e7eb !important;
 }
 
-body:not(.dark) .border-discord-gray-700 {
+body:not(.dark):not(.theme-custom) .border-discord-gray-700 {
   border-color: #e5e7eb !important;
 }
 
-body:not(.dark) .border-discord-gray-600 {
+body:not(.dark):not(.theme-custom) .border-discord-gray-600 {
   border-color: #d1d5db !important;
 }
 
 /* Override hover states for light theme */
-body:not(.dark) .hover\:bg-discord-gray-600\/50:hover,
-body:not(.dark) .hover\:bg-discord-gray-600:hover {
+body:not(.dark):not(.theme-custom) .hover\:bg-discord-gray-600\/50:hover,
+body:not(.dark):not(.theme-custom) .hover\:bg-discord-gray-600:hover {
   background-color: #e5e7eb !important;
 }
 
-body:not(.dark) .hover\:bg-discord-gray-500:hover {
+body:not(.dark):not(.theme-custom) .hover\:bg-discord-gray-500:hover {
   background-color: #d1d5db !important;
 }
 
-body:not(.dark) .hover\:text-white:hover {
+body:not(.dark):not(.theme-custom) .hover\:text-white:hover {
   color: #111827 !important;
 }
 
 /* Light theme component overrides */
-body:not(.dark) .sub-panel-header {
+body:not(.dark):not(.theme-custom) .sub-panel-header {
   color: #6b7280 !important;
 }
 
-body:not(.dark) .sub-panel-item {
+body:not(.dark):not(.theme-custom) .sub-panel-item {
   color: #4b5563 !important;
 }
 
-body:not(.dark) .sub-panel-item:hover {
+body:not(.dark):not(.theme-custom) .sub-panel-item:hover {
   background-color: #e5e7eb !important;
   color: #111827 !important;
 }
 
-body:not(.dark) .sub-panel-item.active {
+body:not(.dark):not(.theme-custom) .sub-panel-item.active {
   background-color: #dbeafe !important;
   color: #1e40af !important;
 }
 
-body:not(.dark) .dm-list-section {
+body:not(.dark):not(.theme-custom) .dm-list-section {
   color: #6b7280 !important;
 }
 
-body:not(.dark) .group-item {
+body:not(.dark):not(.theme-custom) .group-item {
   color: #4b5563 !important;
 }
 
-body:not(.dark) .group-item:hover {
+body:not(.dark):not(.theme-custom) .group-item:hover {
   background-color: #e5e7eb !important;
   color: #111827 !important;
 }
 
-body:not(.dark) .group-item.active {
+body:not(.dark):not(.theme-custom) .group-item.active {
   background-color: #dbeafe !important;
   color: #1e40af !important;
 }
 
-body:not(.dark) .group-name {
+body:not(.dark):not(.theme-custom) .group-name {
   color: #111827 !important;
 }
 
-body:not(.dark) .channel-indicator {
+body:not(.dark):not(.theme-custom) .channel-indicator {
   color: #6b7280 !important;
 }
 
-body:not(.dark) .member-count {
+body:not(.dark):not(.theme-custom) .member-count {
   color: #6b7280 !important;
 }
 
 /* Input fields in light theme */
-body:not(.dark) input:not([type="checkbox"]):not([type="radio"]),
-body:not(.dark) textarea,
-body:not(.dark) select {
+body:not(.dark):not(.theme-custom) input:not([type="checkbox"]):not([type="radio"]),
+body:not(.dark):not(.theme-custom) textarea,
+body:not(.dark):not(.theme-custom) select {
   background-color: #ffffff !important;
   color: #111827 !important;
   border-color: #d1d5db !important;
 }
 
-body:not(.dark) input::placeholder,
-body:not(.dark) textarea::placeholder {
+body:not(.dark):not(.theme-custom) input::placeholder,
+body:not(.dark):not(.theme-custom) textarea::placeholder {
   color: #9ca3af !important;
 }
 
 /* Cards and panels in light theme */
-body:not(.dark) .friend-row {
+body:not(.dark):not(.theme-custom) .friend-row {
   border-top-color: #e5e7eb !important;
 }
 
-body:not(.dark) .friend-row:hover {
+body:not(.dark):not(.theme-custom) .friend-row:hover {
   background-color: #f3f4f6 !important;
 }
 
 /* Headers in light theme */
-body:not(.dark) header {
+body:not(.dark):not(.theme-custom) header {
   background-color: #f9fafb !important;
   border-bottom-color: #e5e7eb !important;
 }
 
 /* Sidebar icons in light mode */
-body:not(.dark) .sidebar-icon {
+body:not(.dark):not(.theme-custom) .sidebar-icon {
   background-color: #e5e7eb !important;
   color: #4b5563 !important;
 }
 
-body:not(.dark) .sidebar-tab.active .sidebar-icon,
-body:not(.dark) .sidebar-tab:hover .sidebar-icon {
+body:not(.dark):not(.theme-custom) .sidebar-tab.active .sidebar-icon,
+body:not(.dark):not(.theme-custom) .sidebar-tab:hover .sidebar-icon {
   background-color: #5865f2 !important;
   color: white !important;
 }
 
 /* Shadow overrides for light theme */
-body:not(.dark) .shadow-md {
+body:not(.dark):not(.theme-custom) .shadow-md {
   box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
 }
 
 /* Scrollbar for light theme */
-body:not(.dark) ::-webkit-scrollbar-thumb {
+body:not(.dark):not(.theme-custom) ::-webkit-scrollbar-thumb {
   background: #d1d5db !important;
 }
 
 /* Avatar ring/border in light theme */
-body:not(.dark) img[class*="ring"],
-body:not(.dark) .ring-4,
-body:not(.dark) .ring-2,
-body:not(.dark) [class*="ring-"] {
+body:not(.dark):not(.theme-custom) img[class*="ring"],
+body:not(.dark):not(.theme-custom) .ring-4,
+body:not(.dark):not(.theme-custom) .ring-2,
+body:not(.dark):not(.theme-custom) [class*="ring-"] {
   --tw-ring-color: #e5e7eb !important;
   border-color: #e5e7eb !important;
 }
 
 /* Settings and logout buttons in light theme - more specific selectors */
-body:not(.dark) button.text-discord-gray-400,
-body:not(.dark) a.text-discord-gray-400 {
+body:not(.dark):not(.theme-custom) button.text-discord-gray-400,
+body:not(.dark):not(.theme-custom) a.text-discord-gray-400 {
   color: #6b7280 !important;
 }
 
-body:not(.dark) button.text-discord-gray-400:hover,
-body:not(.dark) button.hover\:text-white:hover {
+body:not(.dark):not(.theme-custom) button.text-discord-gray-400:hover,
+body:not(.dark):not(.theme-custom) button.hover\:text-white:hover {
   color: #111827 !important;
 }
 
-body:not(.dark) a.hover\:text-red-400:hover {
+body:not(.dark):not(.theme-custom) a.hover\:text-red-400:hover {
   color: #dc2626 !important;
 }
 
-body:not(.dark) .hover\:bg-discord-gray-600\/50:hover {
+body:not(.dark):not(.theme-custom) .hover\:bg-discord-gray-600\/50:hover {
   background-color: #e5e7eb !important;
 }
 
 /* User panel at bottom in light theme - override bg-discord-gray-500/30 */
-body:not(.dark) .bg-discord-gray-500\/30 {
+body:not(.dark):not(.theme-custom) .bg-discord-gray-500\/30 {
   background-color: rgba(243, 244, 246, 0.95) !important;
   border-top: 1px solid #e5e7eb !important;
 }
 
-body:not(.dark) #userPanelUsername {
+body:not(.dark):not(.theme-custom) #userPanelUsername {
   color: #111827 !important;
 }
 
-body:not(.dark) #userPanelUsertag {
+body:not(.dark):not(.theme-custom) #userPanelUsertag {
   color: #6b7280 !important;
 }
 
 /* Avatar in user panel */
-body:not(.dark) #userPanelAvatar {
+body:not(.dark):not(.theme-custom) #userPanelAvatar {
   border: 2px solid #e5e7eb !important;
 }
 
@@ -2651,13 +2651,13 @@ body:not(.dark) #userPanelAvatar {
   object-fit: cover;
 }
 
-body:not(.dark) #avatarImage {
+body:not(.dark):not(.theme-custom) #avatarImage {
   border-color: #ffffff !important;
   box-shadow: 0 0 0 4px #e5e7eb !important;
 }
 
 /* Ensure all rounded avatars get proper theme borders */
-body:not(.dark) img.rounded-full {
+body:not(.dark):not(.theme-custom) img.rounded-full {
   border-color: #e5e7eb !important;
 }
 
@@ -2735,12 +2735,12 @@ body.dark img.rounded-full {
 }
 
 /* Light mode overrides */
-body:not(.dark) .add-group-btn {
+body:not(.dark):not(.theme-custom) .add-group-btn {
   background: #e3e5e8;
   color: #3ba55d;
 }
 
-body:not(.dark) .add-group-btn:hover {
+body:not(.dark):not(.theme-custom) .add-group-btn:hover {
   background: #3ba55d;
   color: white;
 }
@@ -3042,7 +3042,7 @@ body.dark .neomorphic {
 
 /* === CSS Variable Overrides for Light Theme === */
 /* These override the :root variables, automatically adapting all components */
-body:not(.dark) {
+body:not(.dark):not(.theme-custom) {
   /* Discord color palette - inverted for light theme */
   --discord-gray-900: #e5e7eb;
   --discord-gray-800: #f3f4f6;
@@ -3075,187 +3075,187 @@ body:not(.dark) {
 }
 
 /* Override all discord-gray backgrounds for light theme */
-body:not(.dark) .bg-discord-gray-900,
-body:not(.dark) [class*="bg-discord-gray-900"] {
+body:not(.dark):not(.theme-custom) .bg-discord-gray-900,
+body:not(.dark):not(.theme-custom) [class*="bg-discord-gray-900"] {
   background-color: #e5e7eb !important;
 }
 
-body:not(.dark) .bg-discord-gray-800,
-body:not(.dark) [class*="bg-discord-gray-800"] {
+body:not(.dark):not(.theme-custom) .bg-discord-gray-800,
+body:not(.dark):not(.theme-custom) [class*="bg-discord-gray-800"] {
   background-color: #f3f4f6 !important;
 }
 
-body:not(.dark) .bg-discord-gray-700,
-body:not(.dark) [class*="bg-discord-gray-700"] {
+body:not(.dark):not(.theme-custom) .bg-discord-gray-700,
+body:not(.dark):not(.theme-custom) [class*="bg-discord-gray-700"] {
   background-color: #f9fafb !important;
 }
 
-body:not(.dark) .bg-discord-gray-600,
-body:not(.dark) [class*="bg-discord-gray-600"] {
+body:not(.dark):not(.theme-custom) .bg-discord-gray-600,
+body:not(.dark):not(.theme-custom) [class*="bg-discord-gray-600"] {
   background-color: #e5e7eb !important;
 }
 
-body:not(.dark) .bg-discord-gray-500,
-body:not(.dark) [class*="bg-discord-gray-500"] {
+body:not(.dark):not(.theme-custom) .bg-discord-gray-500,
+body:not(.dark):not(.theme-custom) [class*="bg-discord-gray-500"] {
   background-color: #d1d5db !important;
 }
 
 /* Override text colors for light theme */
-body:not(.dark) .text-discord-gray-400,
-body:not(.dark) [class*="text-discord-gray-400"] {
+body:not(.dark):not(.theme-custom) .text-discord-gray-400,
+body:not(.dark):not(.theme-custom) [class*="text-discord-gray-400"] {
   color: #6b7280 !important;
 }
 
-body:not(.dark) .text-discord-gray-300,
-body:not(.dark) [class*="text-discord-gray-300"] {
+body:not(.dark):not(.theme-custom) .text-discord-gray-300,
+body:not(.dark):not(.theme-custom) [class*="text-discord-gray-300"] {
   color: #374151 !important;
 }
 
-body:not(.dark) .text-white,
-body:not(.dark) [class*="text-white"] {
+body:not(.dark):not(.theme-custom) .text-white,
+body:not(.dark):not(.theme-custom) [class*="text-white"] {
   color: #111827 !important;
 }
 
 /* Override borders for light theme */
-body:not(.dark) .border-discord-gray-900,
-body:not(.dark) [class*="border-discord-gray-900"] {
+body:not(.dark):not(.theme-custom) .border-discord-gray-900,
+body:not(.dark):not(.theme-custom) [class*="border-discord-gray-900"] {
   border-color: #d1d5db !important;
 }
 
-body:not(.dark) .border-discord-gray-800,
-body:not(.dark) [class*="border-discord-gray-800"] {
+body:not(.dark):not(.theme-custom) .border-discord-gray-800,
+body:not(.dark):not(.theme-custom) [class*="border-discord-gray-800"] {
   border-color: #e5e7eb !important;
 }
 
-body:not(.dark) .border-discord-gray-700,
-body:not(.dark) [class*="border-discord-gray-700"] {
+body:not(.dark):not(.theme-custom) .border-discord-gray-700,
+body:not(.dark):not(.theme-custom) [class*="border-discord-gray-700"] {
   border-color: #e5e7eb !important;
 }
 
-body:not(.dark) .border-discord-gray-600,
-body:not(.dark) [class*="border-discord-gray-600"] {
+body:not(.dark):not(.theme-custom) .border-discord-gray-600,
+body:not(.dark):not(.theme-custom) [class*="border-discord-gray-600"] {
   border-color: #d1d5db !important;
 }
 
 /* Override hover states for light theme */
-body:not(.dark) .hover\:bg-discord-gray-600\/50:hover,
-body:not(.dark) .hover\:bg-discord-gray-600:hover {
+body:not(.dark):not(.theme-custom) .hover\:bg-discord-gray-600\/50:hover,
+body:not(.dark):not(.theme-custom) .hover\:bg-discord-gray-600:hover {
   background-color: #e5e7eb !important;
 }
 
-body:not(.dark) .hover\:bg-discord-gray-500:hover {
+body:not(.dark):not(.theme-custom) .hover\:bg-discord-gray-500:hover {
   background-color: #d1d5db !important;
 }
 
-body:not(.dark) .hover\:text-white:hover {
+body:not(.dark):not(.theme-custom) .hover\:text-white:hover {
   color: #111827 !important;
 }
 
 /* Light theme specific component overrides */
-body:not(.dark) .sub-panel-header {
+body:not(.dark):not(.theme-custom) .sub-panel-header {
   color: #6b7280 !important;
 }
 
-body:not(.dark) .sub-panel-item {
+body:not(.dark):not(.theme-custom) .sub-panel-item {
   color: #4b5563 !important;
 }
 
-body:not(.dark) .sub-panel-item:hover {
+body:not(.dark):not(.theme-custom) .sub-panel-item:hover {
   background-color: #e5e7eb !important;
   color: #111827 !important;
 }
 
-body:not(.dark) .sub-panel-item.active {
+body:not(.dark):not(.theme-custom) .sub-panel-item.active {
   background-color: #dbeafe !important;
   color: #1e40af !important;
 }
 
-body:not(.dark) .dm-list-section {
+body:not(.dark):not(.theme-custom) .dm-list-section {
   color: #6b7280 !important;
 }
 
-body:not(.dark) .group-item {
+body:not(.dark):not(.theme-custom) .group-item {
   color: #4b5563 !important;
 }
 
-body:not(.dark) .group-item:hover {
+body:not(.dark):not(.theme-custom) .group-item:hover {
   background-color: #e5e7eb !important;
   color: #111827 !important;
 }
 
-body:not(.dark) .group-item.active {
+body:not(.dark):not(.theme-custom) .group-item.active {
   background-color: #dbeafe !important;
   color: #1e40af !important;
 }
 
-body:not(.dark) .group-name {
+body:not(.dark):not(.theme-custom) .group-name {
   color: #111827 !important;
 }
 
-body:not(.dark) .channel-indicator {
+body:not(.dark):not(.theme-custom) .channel-indicator {
   color: #6b7280 !important;
 }
 
-body:not(.dark) .member-count {
+body:not(.dark):not(.theme-custom) .member-count {
   color: #6b7280 !important;
 }
 
 /* Input fields in light theme */
-body:not(.dark) input,
-body:not(.dark) textarea,
-body:not(.dark) select {
+body:not(.dark):not(.theme-custom) input,
+body:not(.dark):not(.theme-custom) textarea,
+body:not(.dark):not(.theme-custom) select {
   background-color: #ffffff !important;
   color: #111827 !important;
   border-color: #d1d5db !important;
 }
 
-body:not(.dark) input::placeholder,
-body:not(.dark) textarea::placeholder {
+body:not(.dark):not(.theme-custom) input::placeholder,
+body:not(.dark):not(.theme-custom) textarea::placeholder {
   color: #9ca3af !important;
 }
 
 /* Cards and panels in light theme */
-body:not(.dark) .profile-card {
+body:not(.dark):not(.theme-custom) .profile-card {
   background-color: rgba(255, 255, 255, 0.95) !important;
 }
 
-body:not(.dark) .friend-row {
+body:not(.dark):not(.theme-custom) .friend-row {
   border-top-color: #e5e7eb !important;
 }
 
-body:not(.dark) .friend-row:hover {
+body:not(.dark):not(.theme-custom) .friend-row:hover {
   background-color: #f3f4f6 !important;
 }
 
 /* Headers in light theme */
-body:not(.dark) header {
+body:not(.dark):not(.theme-custom) header {
   background-color: #f9fafb !important;
   border-bottom-color: #e5e7eb !important;
 }
 
 /* Ensure sidebar icons work in light mode */
-body:not(.dark) .sidebar-icon {
+body:not(.dark):not(.theme-custom) .sidebar-icon {
   background-color: #e5e7eb !important;
   color: #4b5563 !important;
 }
 
-body:not(.dark) .sidebar-tab.active .sidebar-icon,
-body:not(.dark) .sidebar-tab:hover .sidebar-icon {
+body:not(.dark):not(.theme-custom) .sidebar-tab.active .sidebar-icon,
+body:not(.dark):not(.theme-custom) .sidebar-tab:hover .sidebar-icon {
   background-color: #5865f2 !important;
   color: white !important;
 }
 
 /* Chat messages in light theme */
-body:not(.dark) .chat-messages {
+body:not(.dark):not(.theme-custom) .chat-messages {
   background-color: transparent !important;
 }
 
-body:not(.dark) .message.self {
+body:not(.dark):not(.theme-custom) .message.self {
   background-color: #3b82f6 !important;
   color: #ffffff !important;
 }
 
-body:not(.dark) .message.other {
+body:not(.dark):not(.theme-custom) .message.other {
   background-color: #e5e7eb !important;
   color: #111827 !important;
 }
@@ -3282,7 +3282,7 @@ body:not(.dark) .message.other {
   overflow: hidden;
 }
 
-body:not(.dark) .zylo-premium-card {
+body:not(.dark):not(.theme-custom) .zylo-premium-card {
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
@@ -3294,7 +3294,7 @@ body:not(.dark) .zylo-premium-card {
   border-color: rgba(255, 255, 255, 0.1);
 }
 
-body:not(.dark) .zylo-premium-card:hover {
+body:not(.dark):not(.theme-custom) .zylo-premium-card:hover {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
   border-color: rgba(0, 0, 0, 0.15);
 }
@@ -3353,11 +3353,11 @@ body:not(.dark) .zylo-premium-card:hover {
   border-color: rgba(255, 255, 255, 0.1);
 }
 
-body:not(.dark) .editable-row {
+body:not(.dark):not(.theme-custom) .editable-row {
   background: rgba(0, 0, 0, 0.02);
 }
 
-body:not(.dark) .editable-row:hover {
+body:not(.dark):not(.theme-custom) .editable-row:hover {
   background: rgba(0, 0, 0, 0.04);
   border-color: rgba(0, 0, 0, 0.05);
 }
@@ -3397,12 +3397,12 @@ body:not(.dark) .editable-row:hover {
   transform: scale(1.05);
 }
 
-body:not(.dark) .edit-icon {
+body:not(.dark):not(.theme-custom) .edit-icon {
   background: rgba(0, 0, 0, 0.05);
   color: var(--discord-gray-500);
 }
 
-body:not(.dark) .edit-icon:hover {
+body:not(.dark):not(.theme-custom) .edit-icon:hover {
   background: var(--discord-blurple);
   color: white;
 }
@@ -3575,12 +3575,18 @@ body:not(.dark) .edit-icon:hover {
 }
 
 /* PNG/SVG asset frames — image rendered via JS backgroundImage on the layer */
+.frame-pfp-2,
+.frame-pfp-3,
+.frame-pfp-4,
+.frame-pfp-5,
+.frame-pfp-6,
+.frame-pfp-7,
+.frame-pfp-8,
+.frame-pfp-9,
 .frame-pfp-10,
 .frame-pfp-11,
-.frame-pfp-2,
 .frame-pfp-12,
-.frame-pfp-13,
-.frame-pfp-3 {
+.frame-pfp-13 {
   /* Using webkit-mask to punch out the center, allowing the frame to overlay 
      without entirely obscuring the avatar underneath, even if the PNG itself isn't clean */
   background-size: contain;
@@ -3602,9 +3608,6 @@ body:not(.dark) .edit-icon:hover {
 /* --- Banner Effect Aliases (cosmetics.js uses .banner-* on .banner-effect layer) --- */
 .banner-none {}
 
-.banner-blur {
-  position: relative;
-}
 .banner-blur::after {
   content: "";
   position: absolute;
@@ -3614,9 +3617,6 @@ body:not(.dark) .edit-icon:hover {
   -webkit-backdrop-filter: blur(2px);
 }
 
-.banner-gradient {
-  position: relative;
-}
 .banner-gradient::after {
   content: "";
   position: absolute;
@@ -3629,9 +3629,6 @@ body:not(.dark) .edit-icon:hover {
   );
 }
 
-.banner-vignette {
-  position: relative;
-}
 .banner-vignette::after {
   content: "";
   position: absolute;
@@ -3649,6 +3646,45 @@ body:not(.dark) .edit-icon:hover {
     0 0 40px rgba(0, 255, 255, 0.3),
     0 0 60px rgba(0, 255, 255, 0.1);
   border: 2px solid #00ffff;
+}
+
+.banner-scanline::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 0, 0, 0.4) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+}
+
+.banner-mono {
+  backdrop-filter: grayscale(100%) contrast(1.2);
+  -webkit-backdrop-filter: grayscale(100%) contrast(1.2);
+}
+
+.banner-sepia {
+  backdrop-filter: sepia(100%) hue-rotate(320deg) contrast(1.1);
+  -webkit-backdrop-filter: sepia(100%) hue-rotate(320deg) contrast(1.1);
+}
+
+.effect-scanline {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 0, 0.2) 2px,
+    rgba(0, 255, 0, 0.2) 4px
+  );
+  background-size: 100% 4px;
+  animation: scanlineScroll 2s linear infinite;
+}
+@keyframes scanlineScroll {
+  from { background-position: 0 0; }
+  to { background-position: 0 100px; }
 }
 
 /* ==========================================================================
@@ -3690,4 +3726,102 @@ input[type="color"].w-10.h-10.rounded-full::-webkit-color-swatch {
 }
 .custom-scrollbar:hover::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   GLOBAL NOTIFICATION TOASTS (DISCORD-STYLE)
+   ========================================================================== */
+#notification-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+  pointer-events: none; /* Container itself shouldn't block clicks */
+}
+
+.notification-toast {
+  pointer-events: auto;
+  width: 320px;
+  background: rgba(20, 20, 30, 0.85); /* Dark solid base */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.7);
+  transform: translateX(120%);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.notification-toast.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.notification-toast:hover {
+  background: rgba(30, 30, 45, 0.95);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.toast-dm {
+  border-left: 4px solid #10b981; /* Emerald/Green glow for DMs */
+}
+
+.toast-group {
+  border-left: 4px solid #8b5cf6; /* Violet/Purple glow for Groups */
+}
+
+.notification-toast img.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.notification-toast .toast-content {
+  flex-grow: 1;
+  min-width: 0; /* needed for truncation */
+}
+
+.notification-toast .toast-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2px;
+}
+
+.notification-toast .toast-title {
+  font-weight: 600;
+  color: #f3f4f6;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notification-toast .toast-subtitle {
+  font-size: 0.7rem;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.notification-toast .toast-message {
+  font-size: 0.85rem;
+  color: #d1d5db;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit to 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.3;
 }
